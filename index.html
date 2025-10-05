@@ -15,25 +15,22 @@
   --max-width:1200px;
 }
 
-/* Reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
   background:var(--beige);
   color:var(--black);
-  font-family: "Times New Roman", Georgia, serif; /* fallback for Baskerville look */
+  font-family: "Times New Roman", Georgia, serif;
   -webkit-font-smoothing:antialiased;
 }
 
-/* Page wrapper */
 .container{
   max-width:var(--max-width);
   margin:28px auto;
   padding:0 28px;
 }
 
-/* Header */
 .header{
   padding:18px 0;
   display:flex;
@@ -43,7 +40,6 @@ body{
 .header .brand{font-family:Georgia, 'Times New Roman', serif;font-size:20px;color:var(--black)}
 .header nav a{color:var(--black);text-decoration:none;margin-left:28px;font-weight:500;opacity:0.85}
 
-/* Two-column hero */
 .hero{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -52,9 +48,8 @@ body{
   margin-top:26px;
 }
 
-/* Left photo card — a bit smaller than the column, with subtle inset */
 .photo-card{
-  width:84%;                 /* smaller than full column */
+  width:84%;
   margin-left:0;
   border-radius:10px;
   overflow:hidden;
@@ -65,90 +60,37 @@ body{
   align-self:start;
 }
 
-/* Image inside card — covers, responsive */
 .photo-card img{
   display:block;
   width:100%;
   height:auto;
   object-fit:cover;
   border-radius:6px;
-  aspect-ratio: 3/4; /* portrait look like your screenshot */
+  aspect-ratio: 3/4;
 }
 
-/* Right column content */
-.hero-right{
-  padding-right:8%;
-}
-
-/* Big Baskerville-like title */
+.hero-right{padding-right:8%;}
 .title{
   margin:0 0 18px 0;
   font-family: "Baskerville", "Baskerville Old Face", "Times New Roman", Georgia, serif;
   font-weight:700;
   color:var(--black);
-  /* big size and split lines */
   font-size: clamp(48px, 10vw, 94px);
   line-height: 0.98;
   letter-spacing: 0.5px;
   transform-origin:center;
-  transform: scaleX(1.14); /* elongate horizontally */
+  transform: scaleX(1.14);
 }
+.rule{width:56px;height:4px;background: rgba(0,0,0,0.08);border-radius:4px;margin-bottom:18px;}
+.subtitle{margin:10px 0 26px 0;font-size:20px;color:var(--muted);font-family: Arial, Helvetica, sans-serif;}
+.cta{display:inline-block;background:var(--black);color:var(--white);padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,0.12);}
 
-/* small decorative rule */
-.rule{
-  width:56px;
-  height:4px;
-  background: rgba(0,0,0,0.08);
-  border-radius:4px;
-  margin-bottom:18px;
-}
-
-/* Subtitle */
-.subtitle{
-  margin:10px 0 26px 0;
-  font-size:20px;
-  color:var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* CTA */
-.cta{
-  display:inline-block;
-  background:var(--black);
-  color:var(--white);
-  padding:12px 18px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:700;
-  box-shadow:0 8px 18px rgba(0,0,0,0.12);
-}
-
-/* Projects heading below */
-.section-title{
-  margin-top:60px;
-  color:var(--muted);
-  letter-spacing:2px;
-  font-size:13px;
-}
-
-/* Grid of project cards (like screenshot) */
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:28px;
-  margin-top:18px;
-}
-.project-card{
-  background: rgba(255,255,255,0.98);
-  padding:34px;
-  border-radius:8px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-  border:1px solid rgba(0,0,0,0.03);
-}
+.section-title{margin-top:60px;color:var(--muted);letter-spacing:2px;font-size:13px;}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:18px;}
+.project-card{background: rgba(255,255,255,0.98);padding:34px;border-radius:8px;box-shadow: 0 20px 40px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.03);}
 .project-card h3{margin:0;font-size:34px;font-family: "Baskerville", Georgia, serif;color:var(--black)}
 .project-card p{color:var(--muted);margin-top:14px;line-height:1.6}
 
-/* Responsive */
 @media (max-width:1000px){
   .hero{grid-template-columns:1fr;gap:22px}
   .photo-card{width:60%;margin:0 auto}
@@ -175,15 +117,8 @@ body{
   </header>
 
   <section class="hero" aria-label="Hero">
-    <!-- LEFT: photo card -->
     <div class="photo-card" aria-hidden="false">
-      <!-- Use the <picture> element and srcset for high-res responsive images -->
-      <picture>
-        <!-- retina / 2x -->
-        <source srcset="images/hero@2x.jpg 2x, images/hero@1x.jpg 1x" />
-        <img src="images/hero@1x.jpg" alt="Portrait of Aryaman Arora" loading="eager" width="1200" height="1600">
-      </picture>
-      <!-- optional carousel dots inside card (small) -->
+      <img src="images/thumb1.jpg" alt="Portrait of Aryaman Arora" loading="eager" width="1200" height="1600">
       <div style="display:flex;justify-content:center;margin-top:10px;gap:8px;">
         <span style="width:8px;height:8px;border-radius:999px;background:#d5d5d5;display:inline-block"></span>
         <span style="width:8px;height:8px;border-radius:999px;background:#d5d5d5;display:inline-block"></span>
@@ -191,7 +126,6 @@ body{
       </div>
     </div>
 
-    <!-- RIGHT: text -->
     <div class="hero-right">
       <h1 class="title">Aryaman<br>Arora</h1>
       <div class="rule" aria-hidden="true"></div>
@@ -200,7 +134,6 @@ body{
     </div>
   </section>
 
-  <!-- Projects area to mimic the second part of your screenshot -->
   <div id="projects">
     <div class="section-title">SELECTED WORKS</div>
     <h2 style="margin:8px 0 0 0;font-family: 'Baskerville', Georgia, serif;font-size:54px;line-height:1.04">Innovation Projects</h2>
