@@ -1,296 +1,226 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aryaman Arora — Portfolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aryaman Arora — Portfolio</title>
 
-  <!-- If you have a webfont file (Baskerville or Bakersville), host it and add @font-face here.
-       Example:
-       @font-face {
-         font-family: 'Bakersville';
-         src: url('/fonts/bakersville.woff2') format('woff2');
-         font-weight: 400;
-         font-style: normal;
-         font-display: swap;
-       }
-  -->
-  <style>
-    :root{
-      --black: #2b2b2b;
-      --beige: #F5F5DC; /* page background */
-      --white: #ffffff;
-      --muted: #6b6b6b;
-      --accent: #111; /* strong black */
-      --max-width: 1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, serif;
-      background:var(--beige);
-      color:var(--black);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
+<style>
+:root{
+  --black:#2b2b2b;
+  --beige:#F5F5DC;
+  --white:#fff;
+  --muted:#6b6b6b;
+  --card-shadow: 0 30px 50px rgba(0,0,0,0.12);
+  --max-width:1200px;
+}
 
-    /* Header */
-    header{
-      background:var(--black);
-      color:var(--white);
-      position:sticky;
-      top:0;
-      z-index:60;
-      box-shadow:0 6px 18px rgba(0,0,0,0.22);
-    }
-    .nav-inner{
-      max-width:var(--max-width);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 18px;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:8px;background:var(--beige);display:grid;place-items:center;color:var(--black);font-weight:700}
-    nav a{color:var(--white);text-decoration:none;margin-left:16px;font-weight:600}
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--beige);
+  color:var(--black);
+  font-family: "Times New Roman", Georgia, serif; /* fallback for Baskerville look */
+  -webkit-font-smoothing:antialiased;
+}
 
-    /* HERO - full bleed */
-    .hero-wrap{background:var(--beige);padding:0;margin:0}
-    .hero{
-      position:relative;
-      min-height:62vh;
-      display:grid;
-      align-items:center;
-      justify-items:center;
-      overflow:hidden;
-    }
+/* Page wrapper */
+.container{
+  max-width:var(--max-width);
+  margin:28px auto;
+  padding:0 28px;
+}
 
-    /* background image (carousel slide) */
-    .hero .slide{
-      position:absolute;
-      inset:0;
-      background-size:cover;
-      background-position:center;
-      transition:opacity 0.8s ease;
-      opacity:0;
-      will-change:opacity;
-    }
-    .hero .slide.active{opacity:1}
+/* Header */
+.header{
+  padding:18px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.header .brand{font-family:Georgia, 'Times New Roman', serif;font-size:20px;color:var(--black)}
+.header nav a{color:var(--black);text-decoration:none;margin-left:28px;font-weight:500;opacity:0.85}
 
-    /* overlay to slightly darken images for legibility */
-    .hero .overlay{
-      position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.22));
-      pointer-events:none;
-    }
+/* Two-column hero */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:48px;
+  align-items:center;
+  margin-top:26px;
+}
 
-    .hero-content{
-      position:relative;
-      z-index:30;
-      text-align:center;
-      padding:6vh 20px;
-      width:100%;
-      max-width:var(--max-width);
-    }
+/* Left photo card — a bit smaller than the column, with subtle inset */
+.photo-card{
+  width:84%;                 /* smaller than full column */
+  margin-left:0;
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--white);
+  box-shadow: var(--card-shadow);
+  padding:10px;
+  display:block;
+  align-self:start;
+}
 
-    /* Main title - Baskerville family fallback used */
-    .hero-title{
-      font-family: "Baskerville", "Baskerville Old Face", "Times New Roman", serif;
-      font-weight:700;
-      margin:0;
-      line-height:0.9;
-      /* huge size on desktop */
-      font-size:clamp(48px, 11vw, 160px);
-      color:var(--black);
-      /* elongate text horizontally */
-      transform-origin:center;
-      transform:scaleX(1.25);
-      letter-spacing:2px;
-      text-shadow: 0 6px 18px rgba(255,255,255,0.20), 0 2px 6px rgba(0,0,0,0.2);
-      /* make it stand out on image */
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.88));
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:6px;
-    }
+/* Image inside card — covers, responsive */
+.photo-card img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  border-radius:6px;
+  aspect-ratio: 3/4; /* portrait look like your screenshot */
+}
 
-    /* Subtitle */
-    .hero-sub{
-      margin-top:14px;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color:var(--muted);
-      font-size:clamp(14px,2.2vw,20px);
-      font-weight:600;
-    }
+/* Right column content */
+.hero-right{
+  padding-right:8%;
+}
 
-    /* Carousel controls inside hero */
-    .hero-controls{position:relative;z-index:40;margin-top:22px;display:flex;gap:12px;justify-content:center;align-items:center}
-    .btn{
-      display:inline-grid;place-items:center;border-radius:8px;padding:8px 12px;border:none;cursor:pointer;font-weight:700;background:rgba(255,255,255,0.88);
-      box-shadow:0 6px 18px rgba(0,0,0,0.12)
-    }
+/* Big Baskerville-like title */
+.title{
+  margin:0 0 18px 0;
+  font-family: "Baskerville", "Baskerville Old Face", "Times New Roman", Georgia, serif;
+  font-weight:700;
+  color:var(--black);
+  /* big size and split lines */
+  font-size: clamp(48px, 10vw, 94px);
+  line-height: 0.98;
+  letter-spacing: 0.5px;
+  transform-origin:center;
+  transform: scaleX(1.14); /* elongate horizontally */
+}
 
-    /* Projects / carousel below */
-    .carousel-section{max-width:var(--max-width);margin:36px auto;padding:0 18px}
-    .gallery{
-      display:flex;overflow:hidden;border-radius:10px;gap:10px;
-    }
-    .gallery .item{
-      min-width:33.333%;
-      height:320px;
-      background-size:cover;background-position:center;
-      transition:transform .5s;
-    }
-    .gallery-nav{display:flex;justify-content:center;gap:8px;margin-top:12px}
+/* small decorative rule */
+.rule{
+  width:56px;
+  height:4px;
+  background: rgba(0,0,0,0.08);
+  border-radius:4px;
+  margin-bottom:18px;
+}
 
-    /* pagination dots */
-    .dots{display:flex;gap:8px;justify-content:center;margin-top:8px}
-    .dot{width:10px;height:10px;border-radius:999px;background:rgba(0,0,0,0.12);cursor:pointer}
-    .dot.active{background:var(--black)}
+/* Subtitle */
+.subtitle{
+  margin:10px 0 26px 0;
+  font-size:20px;
+  color:var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    /* Footer */
-    footer{max-width:var(--max-width);margin:36px auto 80px;padding:0 18px;color:var(--muted)}
+/* CTA */
+.cta{
+  display:inline-block;
+  background:var(--black);
+  color:var(--white);
+  padding:12px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);
+}
 
-    /* Responsive tweaks */
-    @media (max-width:900px){
-      .hero-title{transform:scaleX(1.08);font-size:clamp(42px,15vw,92px)}
-      .gallery .item{min-width:50%}
-    }
-    @media (max-width:540px){
-      .hero-title{transform:scaleX(1.02);font-size:clamp(36px,20vw,66px);padding:4px 8px}
-      .gallery .item{min-width:80%}
-    }
-  </style>
+/* Projects heading below */
+.section-title{
+  margin-top:60px;
+  color:var(--muted);
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+/* Grid of project cards (like screenshot) */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+  margin-top:18px;
+}
+.project-card{
+  background: rgba(255,255,255,0.98);
+  padding:34px;
+  border-radius:8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.project-card h3{margin:0;font-size:34px;font-family: "Baskerville", Georgia, serif;color:var(--black)}
+.project-card p{color:var(--muted);margin-top:14px;line-height:1.6}
+
+/* Responsive */
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr;gap:22px}
+  .photo-card{width:60%;margin:0 auto}
+  .hero-right{padding-right:0;text-align:center}
+  .title{font-size: clamp(44px, 14vw, 72px)}
+}
+@media (max-width:520px){
+  .photo-card{width:86%}
+  .projects-grid{grid-template-columns:1fr}
+  .title{font-size:clamp(34px,18vw,52px); transform: scaleX(1.06)}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo">AA</div>
-        <div style="color:var(--white)"><strong>Aryaman Arora</strong><div style="font-size:12px;color:rgba(255,255,255,0.75)">AI • Filmmaking</div></div>
-      </div>
-      <nav aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact" style="background:transparent;border:1px solid rgba(255,255,255,0.12);padding:8px 10px;border-radius:8px;color:var(--white);text-decoration:none;margin-left:12px">Contact</a>
-      </nav>
-    </div>
+
+<div class="container">
+
+  <header class="header">
+    <div class="brand">Aryaman Arora</div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#stories">Stories</a>
+    </nav>
   </header>
 
-  <!-- HERO with huge elongated title and image carousel-like slides -->
-  <section class="hero-wrap">
-    <div class="hero" id="hero">
-
-      <!-- slides (background images). Replace URLs with your images -->
-      <div class="slide active" style="background-image:url('images/slide1.jpg');"></div>
-      <div class="slide"       style="background-image:url('images/slide2.jpg');"></div>
-      <div class="slide"       style="background-image:url('images/slide3.jpg');"></div>
-
-      <div class="overlay" aria-hidden="true"></div>
-
-      <div class="hero-content" role="banner">
-        <h1 class="hero-title">I'm Aryaman Arora.</h1>
-        <div class="hero-sub">I like to tell stories</div>
-
-        <div class="hero-controls" aria-hidden="false">
-          <button class="btn" id="prev">◀</button>
-          <button class="btn" id="next">▶</button>
-        </div>
-
-        <!-- dots for hero -->
-        <div class="dots" id="hero-dots" style="margin-top:18px">
-          <div class="dot active" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
-        </div>
+  <section class="hero" aria-label="Hero">
+    <!-- LEFT: photo card -->
+    <div class="photo-card" aria-hidden="false">
+      <!-- Use the <picture> element and srcset for high-res responsive images -->
+      <picture>
+        <!-- retina / 2x -->
+        <source srcset="images/hero@2x.jpg 2x, images/hero@1x.jpg 1x" />
+        <img src="images/hero@1x.jpg" alt="Portrait of Aryaman Arora" loading="eager" width="1200" height="1600">
+      </picture>
+      <!-- optional carousel dots inside card (small) -->
+      <div style="display:flex;justify-content:center;margin-top:10px;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:999px;background:#d5d5d5;display:inline-block"></span>
+        <span style="width:8px;height:8px;border-radius:999px;background:#d5d5d5;display:inline-block"></span>
+        <span style="width:30px;height:8px;border-radius:999px;background:#fff;display:inline-block"></span>
       </div>
     </div>
-  </section>
 
-  <!-- Below hero: horizontal image band (like the second screenshot). This is a simple 3-up carousel/galleries -->
-  <section class="carousel-section" id="projects">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <h2 style="margin:0">Selected Images</h2>
-      <div style="color:var(--muted);font-size:14px">Replace these with your own images</div>
-    </div>
-
-    <div class="gallery" id="gallery">
-      <div class="item" style="background-image:url('images/thumb1.jpg')"></div>
-      <div class="item" style="background-image:url('images/thumb2.jpg')"></div>
-      <div class="item" style="background-image:url('images/thumb3.jpg')"></div>
-    </div>
-
-    <div class="gallery-nav" style="margin-top:12px">
-      <button class="btn" id="gprev">Prev</button>
-      <button class="btn" id="gnext">Next</button>
+    <!-- RIGHT: text -->
+    <div class="hero-right">
+      <h1 class="title">Aryaman<br>Arora</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <div class="subtitle">I like to tell stories.</div>
+      <a class="cta" href="#projects">Explore My Work &nbsp;→</a>
     </div>
   </section>
 
-  <footer>
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
-      <div style="font-weight:700">Aryaman Arora</div>
-      <div style="color:var(--muted)">© <span id="year"></span></div>
+  <!-- Projects area to mimic the second part of your screenshot -->
+  <div id="projects">
+    <div class="section-title">SELECTED WORKS</div>
+    <h2 style="margin:8px 0 0 0;font-family: 'Baskerville', Georgia, serif;font-size:54px;line-height:1.04">Innovation Projects</h2>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div style="color:var(--muted);font-size:12px;letter-spacing:1.6px">AI & HEALTHCARE</div>
+        <h3>Lab Technology Connector</h3>
+        <p>Built an LLM-powered platform that enables laboratories to seamlessly connect their cutting-edge technologies directly to clients.</p>
+      </div>
+
+      <div class="project-card">
+        <div style="color:var(--muted);font-size:12px;letter-spacing:1.6px">AI & PRODUCTIVITY</div>
+        <h3>NLP Note Taking Application</h3>
+        <p>Developed an intelligent note-taking application leveraging NLP to transform how users capture, organize, and retrieve their thoughts.</p>
+      </div>
     </div>
-  </footer>
+  </div>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+</div>
 
-    /* HERO slide logic */
-    const slides = Array.from(document.querySelectorAll('.hero .slide'));
-    const dots = Array.from(document.querySelectorAll('#hero-dots .dot'));
-    let idx = 0;
-    const show = (i) => {
-      slides.forEach((s,si)=> s.classList.toggle('active', si===i));
-      dots.forEach((d,di)=> d.classList.toggle('active', di===i));
-      idx = i;
-    }
-    document.getElementById('prev').addEventListener('click', ()=> show((idx-1+slides.length)%slides.length));
-    document.getElementById('next').addEventListener('click', ()=> show((idx+1)%slides.length));
-    dots.forEach(d=> d.addEventListener('click', e => show(parseInt(e.currentTarget.dataset.index,10))));
-
-    // Auto-advance hero
-    let heroTimer = setInterval(()=> show((idx+1)%slides.length), 5000);
-    // pause on hover
-    const heroEl = document.getElementById('hero');
-    heroEl.addEventListener('mouseenter', ()=> clearInterval(heroTimer));
-    heroEl.addEventListener('mouseleave', ()=> { heroTimer = setInterval(()=> show((idx+1)%slides.length), 5000); });
-
-    /* Simple gallery left/right shifting */
-    const gallery = document.getElementById('gallery');
-    const gNext = document.getElementById('gnext');
-    const gPrev = document.getElementById('gprev');
-
-    // show 3 items on desktop by translating gallery
-    let gIndex = 0;
-    function updateGallery() {
-      // depending on item width, translate accordingly
-      const item = gallery.querySelector('.item');
-      if(!item) return;
-      const itemW = item.getBoundingClientRect().width + 10; // gap
-      gallery.style.transform = `translateX(${-(gIndex * itemW)}px)`;
-      gallery.style.transition = 'transform 0.6s';
-    }
-    gNext.addEventListener('click', ()=> {
-      const max = Math.max(0, gallery.children.length - 1);
-      gIndex = Math.min(max, gIndex + 1);
-      updateGallery();
-    });
-    gPrev.addEventListener('click', ()=> {
-      gIndex = Math.max(0, gIndex - 1);
-      updateGallery();
-    });
-
-    // simple responsive correction on resize
-    window.addEventListener('resize', ()=> updateGallery());
-
-    // Accessibility: keyboard controls
-    document.addEventListener('keydown', (ev)=> {
-      if(ev.key === 'ArrowLeft') document.getElementById('prev').click();
-      if(ev.key === 'ArrowRight') document.getElementById('next').click();
-    });
-  </script>
 </body>
 </html>
