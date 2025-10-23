@@ -1,273 +1,353 @@
 <!DOCTYPE html>
-<html lang="english">
-  <head>
-    <title>exported project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryaman Arora - Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+        body {
+            font-family: 'Instrument Serif', serif;
+            background-color: #FFFAE6;
+            color: #414141;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 70%;
+            margin: 0 auto;
+            padding: 0 29px;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 58px;
+        }
+
+        .nav-links a {
+            font-size: 24px;
+            font-weight: 400;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 51px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-image img {
+            width: 377px;
+            height: 320px;
+            object-fit: cover;
+            border: 1px solid #000000;
+        }
+
+        .hero-name {
+            font-size: 64px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 24px;
+            font-weight: 400;
+            color: #414141;
+            text-align: center;
+            max-width: 577px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Content Section */
+        .content-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .projects-column {
+            flex: 1;
+        }
+
+        .blog-column {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 400;
+            color: #414141;
+            margin-bottom: 33px;
+            text-align: center;
+        }
+
+        .project-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .project-description {
+            font-size: 24px;
+            font-weight: 400;
+            color: #414141;
+            line-height: 1.3;
+            margin-right: 50px;
+        }
+
+        .project-arrow {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 39px;
+            height: 37px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-arrow::after {
+            content: '↗';
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .project-image-small {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+            float: left;
+        }
+
+        .blog-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 206px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .blog-title {
+            font-size: 32px;
+            font-weight: 400;
+            color: #414141;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .blog-description {
+            font-size: 20px;
+            font-weight: 400;
+            color: #414141;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Vertical Line */
+        .vertical-line {
+            width: 1px;
+            background-color: #414141;
+            margin: 0 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 85%;
+            }
+            
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .vertical-line {
+                width: 100%;
+                height: 1px;
+                margin: 20px 0;
+            }
+            
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                font-size: 18px;
+            }
+            
+            .hero-name {
+                font-size: 48px;
+            }
+            
+            .hero-description {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .hero-image img {
+                width: 300px;
+                height: 250px;
+            }
+        }
     </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="logo">Aryaman Arora</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#work">My Work</a>
+                <a href="#blog">Blog</a>
+                <a href="#recognitions">Recognitions</a>
+            </div>
+        </nav>
 
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-theme-neutral-dark);
-        background: var(--dl-color-theme-neutral-light);
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-image">
+                <img src="images/mainphoto.png" alt="Aryaman Arora">
+            </div>
+            <h1 class="hero-name">I'm Aryaman Arora</h1>
+            <p class="hero-description">
+                I'm a sophomore at Duke studying Mathematics and Computer Science.
+                I like to tell stories and build things that make a difference.
+            </p>
+        </section>
 
-        fill: var(--dl-color-theme-neutral-dark);
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/animate.css@4.1.1/animate.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
-  </head>
-  <body>
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <link href="./index.css" rel="stylesheet" />
+        <!-- Content Section -->
+        <section class="content-section">
+            <!-- Projects Column -->
+            <div class="projects-column" id="work">
+                <h2 class="section-title">PROJECTS</h2>
+                
+                <div class="project-item">
+                    <img src="images/project1-746966.png" alt="Cancer Prediction" class="project-image-small">
+                    <p class="project-description">
+                        Visual cancer progression prediction system using Support Vector Machines (SVM)
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
 
-      <div class="mac-book-pro143-container1">
-        <div class="mac-book-pro143-mac-book-pro143">
-          <span class="mac-book-pro143-text10">Aryaman Arora</span>
-          <span class="mac-book-pro143-text11">
-            <span>
-              I’m a sophomore at Duke studying Mathematics and Computer Science.
-            </span>
-            <br />
-            <span>
-              I like to tell stories and build things that make a difference.
-            </span>
-            <br />
-          </span>
-          <span class="mac-book-pro143-text16">I’m</span>
-          <span class="mac-book-pro143-text17">Projects</span>
-          <span class="mac-book-pro143-text18">
-            Visual cancer progression prediction system using Support Vector
-            Machines (SVM)
-          </span>
-          <span class="mac-book-pro143-text19">
-            LLM advisory system to aid Duke researchers commercialize their
-            innovations across the Research Triangle.
-          </span>
-          <span class="mac-book-pro143-text20">
-            Agentic pipeline to model influenza and T-cell structures, Duke
-            Hickey Lab.
-          </span>
-          <span class="mac-book-pro143-text21">
-            Sentinel , a privacy intelligence app that uses network packet
-            inspection to safeguard users’ personal data from leaks.
-          </span>
-          <span class="mac-book-pro143-text22">Blog</span>
-          <span class="mac-book-pro143-text23">Aryaman</span>
-          <span class="mac-book-pro143-text24">Arora</span>
-          <span class="mac-book-pro143-text25">Home</span>
-          <span class="mac-book-pro143-text26">My Work</span>
-          <span class="mac-book-pro143-text27">Blog</span>
+                <div class="project-item">
+                    <p class="project-description">
+                        LLM advisory system to aid Duke researchers commercialize their innovations across the Research Triangle.
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
 
-          <img
-            src="images/mainphoto.png"
-            alt="Screenshot20251018at13320511617"
-            class="mac-book-pro143-screenshot20251018at1332051"
-          />
-          <img
-            src="public/line11617-hi4k.svg"
-            alt="Line11617"
-            class="mac-book-pro143-line1"
-          />
-          <img
-            src="images/project1.png"
-            alt="transparentillustration1207"
-            class="mac-book-pro143-transparentillustration1"
-          />
-         
-         
-          <span class="mac-book-pro143-text29">
-            Random forest based solar prediction model to increase solar
-            electricity yield for farmers in Bangalore.
-          </span>
-          <span class="mac-book-pro143-text30">
-            Mean reversion algorithm for crypto assets following influencer
-            driven spikes.
-          </span>
-          <img
-            src="public/arrowupright2112-md4vn.svg"
-            alt="Arrowupright2112"
-            class="mac-book-pro143-arrowupright5"
-          />
-          <img
-            src="public/arrowupright2220-bhfq.svg"
-            alt="Arrowupright2220"
-            class="mac-book-pro143-arrowupright6"
-          />
-          <img
-            src="images/project2.png"
-            alt="Screenshot20251018at1717411217"
-            class="mac-book-pro143-screenshot20251018at1717411"
-          />
-          <img
-            src="images/project3.png"
-            alt="image1219"
-            class="mac-book-pro143-image1"
-          />
-          <img
-            src="public/vector12061-9bsz.svg"
-            alt="Vector12061"
-            class="mac-book-pro143-vector1"
-          />
-        </div>
-        <a
-          href="https://play.teleporthq.io/signup"
-          class="mac-book-pro143-link"
-        >
-          
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 19 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="mac-book-pro143-icon1"
-            >
-              <path
-                d="M9.1017 4.64355H2.17867C0.711684 4.64355 -0.477539 5.79975 -0.477539 7.22599V13.9567C-0.477539 15.3829 0.711684 16.5391 2.17867 16.5391H9.1017C10.5687 16.5391 11.7579 15.3829 11.7579 13.9567V7.22599C11.7579 5.79975 10.5687 4.64355 9.1017 4.64355Z"
-                fill="#B23ADE"
-              ></path>
-              <path
-                d="M10.9733 12.7878C14.4208 12.7878 17.2156 10.0706 17.2156 6.71886C17.2156 3.3671 14.4208 0.649963 10.9733 0.649963C7.52573 0.649963 4.73096 3.3671 4.73096 6.71886C4.73096 10.0706 7.52573 12.7878 10.9733 12.7878Z"
-                fill="#FF5C5C"
-              ></path>
-              <path
-                d="M17.7373 13.3654C19.1497 14.1588 19.1497 15.4634 17.7373 16.2493L10.0865 20.5387C8.67402 21.332 7.51855 20.6836 7.51855 19.0968V10.5141C7.51855 8.92916 8.67402 8.2807 10.0865 9.07221L17.7373 13.3654Z"
-                fill="#2874DE"
-              ></path>
-            </svg>
+                <div class="project-item">
+                    <img src="images/project2-3e9303.png" alt="Solar Prediction" class="project-image-small">
+                    <p class="project-description">
+                        Random forest based solar prediction model to increase solar electricity yield for farmers in Bangalore.
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
 
-          </div>
-        </a>
-      </div>
+                <div class="project-item">
+                    <p class="project-description">
+                        Sentinel, a privacy intelligence app that uses network packet inspection to safeguard users' personal data from leaks.
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
+
+                <div class="project-item">
+                    <img src="images/project3.png" alt="Agentic Pipeline" class="project-image-small">
+                    <p class="project-description">
+                        Agentic pipeline to model influenza and T-cell structures, Duke Hickey Lab.
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
+
+                <div class="project-item">
+                    <p class="project-description">
+                        Mean reversion algorithm for crypto assets following influencer driven spikes.
+                    </p>
+                    <div class="project-arrow"></div>
+                </div>
+            </div>
+
+            <!-- Vertical Line -->
+            <div class="vertical-line"></div>
+
+            <!-- Blog Column -->
+            <div class="blog-column" id="blog">
+                <h2 class="section-title">BLOG</h2>
+                <div class="blog-item">
+                    <img src="images/fujithumbnail-492b0e.png" alt="Japan Adventure" class="blog-image">
+                    <h3 class="blog-title">Kawabata's search for a still heart.</h3>
+                    <p class="blog-description">
+                        The experiences of 6 best friends on a summer adventure in the land of rising sun.
+                    </p>
+                </div>
+            </div>
+        </section>
     </div>
-  </body>
+</body>
 </html>
-
-
